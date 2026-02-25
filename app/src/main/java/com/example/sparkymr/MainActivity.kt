@@ -11,6 +11,7 @@ import com.meta.spatial.core.Vector3
 import com.meta.spatial.toolkit.AppSystemActivity
 import com.meta.spatial.toolkit.Material
 import com.meta.spatial.toolkit.Mesh
+import com.meta.spatial.toolkit.Sphere
 import com.meta.spatial.toolkit.SpatialActivityManager
 import com.meta.spatial.toolkit.Transform
 
@@ -35,6 +36,7 @@ class MainActivity : AppSystemActivity() {
             listOf(
                 // 1. Give it a visual representation: A Sphere Mesh
                 Mesh(Uri.parse("mesh://sphere")), // Default procedural sphere
+                Sphere(0.15f), // 15cm radius required by the sphere mesh generator
                 
                 // 2. Give it a cool glowing material (cyan glow for our "Ghost")
                 Material().apply {

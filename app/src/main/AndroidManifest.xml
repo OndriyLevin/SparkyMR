@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Permissions required for Spatial VR and Assistant -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    
+    <!-- Camera permission is experimental for MR, requested to explore Vision later -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Meta Quest specific features -->
+    <uses-feature android:name="android.hardware.vr.headtracking" android:required="true" android:version="1" />
+    <uses-feature android:name="oculus.software.handtracking" android:required="false" />
+    <uses-permission android:name="com.oculus.permission.HAND_TRACKING" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SparkyMR"
+        tools:targetApi="31">
+        
+        <meta-data android:name="com.samsung.android.vr.application.mode" android:value="vr_only"/>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.SparkyMR"
+            android:screenOrientation="landscape"
+            android:configChanges="density|keyboard|keyboardHidden|navigation|orientation|screenLayout|screenSize|uiMode">
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="com.oculus.intent.category.VR" />
+            </intent-filter>
+
+            <!-- Indicates this app is an Immersive Spatial App -->
+            <meta-data android:name="com.oculus.vr.mode" android:value="vr_only"/>
+            <meta-data android:name="com.oculus.supportedDevices" android:value="quest2|questpro|quest3"/>
+            <meta-data android:name="com.oculus.handtracking.frequency" android:value="HIGH"/>
+            <meta-data android:name="com.oculus.handtracking.version" android:value="V2.0"/>
+            <meta-data android:name="com.oculus.telemetry.project_guid" android:value="sparkymr-meta-1"/>
+
+        </activity>
+    </application>
+
+</manifest>
